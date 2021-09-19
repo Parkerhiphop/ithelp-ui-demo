@@ -21,7 +21,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -o ./publish",
+    "chromatic": "npx chromatic --project-token=6e2c04c0a718"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +50,7 @@
     "@storybook/react": "^6.2.9",
     "@tailwindcss/jit": "0.1.1",
     "autoprefixer": "^10.2.5",
+    "chromatic": "^5.10.0",
     "cz-conventional-changelog": "3.3.0",
     "postcss": "^8.3.0",
     "tailwindcss": "^2.1.2"
