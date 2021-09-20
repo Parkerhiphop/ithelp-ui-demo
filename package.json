@@ -21,6 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "pre-commit": "npx prettier --write .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o ./publish",
     "chromatic": "npx chromatic --project-token=6e2c04c0a718"
