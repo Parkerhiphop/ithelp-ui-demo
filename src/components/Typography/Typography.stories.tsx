@@ -6,7 +6,7 @@ import {
   TypographyAlignType,
   TypographyColorType,
   TypographyProps,
-  TypographyVariant,
+  TypographyVariantType,
 } from "./Typography";
 
 const aligns: TypographyAlignType[] = ["left", "center", "right", "justify"];
@@ -21,7 +21,7 @@ const colors: TypographyColorType[] = [
   "gray",
 ];
 
-const variants: TypographyVariant[] = [
+const variants: TypographyVariantType[] = [
   "h1",
   "h2",
   "h3",
@@ -139,7 +139,7 @@ Playground.argTypes = {
 };
 
 export const Variants = () => (
-  <>
+  <div className="flex flex-col items-start gap-2">
     <Typography variant="h1">h1. Heading</Typography>
     <Typography variant="h2">h2. Heading</Typography>
     <Typography variant="h3">h3. Heading</Typography>
@@ -167,7 +167,7 @@ export const Variants = () => (
     <Typography variant="input2">input 2</Typography>
     <Typography variant="input3">input 3</Typography>
     <Typography variant="caption">caption text</Typography>
-  </>
+  </div>
 );
 
 export const Colors = () => (

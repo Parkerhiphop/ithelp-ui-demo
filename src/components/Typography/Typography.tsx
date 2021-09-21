@@ -1,15 +1,38 @@
 import React, { ReactNode } from "react";
 
-export type TypographyVariant =
+export type TypographyVariantType =
   | `h${1 | 2 | 3 | 4 | 5 | 6}`
   | `button${1 | 2 | 3}`
   | `input${1 | 2 | 3}`
   | `body${1 | 2}`
   | "caption";
 
+export const TypographyVariant = {
+  body1: "text-base	font-normal	tracking-normal	leading-6",
+  body2: "text-sm font-normal	tracking-normal leading-5	",
+  button1: "text-base font-medium	tracking-wide	leading-10	",
+  button2: "text-base	font-medium	tracking-wide	leading-8	",
+  button3: "text-sm font-medium	tracking-normal leading-6	",
+  input1: "text-base font-normal tracking-normal leading-10",
+  input2: "text-base font-normal tracking-normal leading-8	",
+  input3: "text-base font-normal tracking-normal leading-6	",
+};
+
+export type TypographyComponent =
+  | `h${1 | 2 | 3 | 4 | 5 | 6}`
+  | "p"
+  | "span"
+  | "label"
+  | "div"
+  | "caption";
+
 function getComponentFromVariant(
-  variant: TypographyVariant
+  variant: TypographyVariantType
 ): TypographyComponent {
+  if (variant.startsWith("caption")) {
+    return "caption";
+  }
+
   if (variant.startsWith("h")) {
     return variant as TypographyComponent;
   }
@@ -42,14 +65,6 @@ export const TypographyColor = {
 
 export type TypographyColorType = keyof typeof TypographyColor;
 
-export type TypographyComponent =
-  | `h${1 | 2 | 3 | 4 | 5 | 6}`
-  | "p"
-  | "span"
-  | "label"
-  | "div"
-  | "caption";
-
 export interface TypographyProps {
   align?: TypographyAlignType;
   children: ReactNode;
@@ -57,7 +72,7 @@ export interface TypographyProps {
   color?: TypographyColorType;
   ellipsis?: boolean;
   noWrap?: boolean;
-  variant?: TypographyVariant;
+  variant?: TypographyVariantType;
 }
 
 /**
@@ -79,11 +94,14 @@ export const Typography: React.FC<TypographyProps> = (props) => {
 
   return (
     <Component
-      className={`${color ? TypographyColor[color] : ""} ${
-        align ? TypographyAlign[align] : ""
-      } ${ellipsis ? "overflow-ellipsis overflow-hidden" : ""} ${
-        noWrap ? "whitespace-nowrap" : ""
-      } ${className ? className : ""}`}
+      className={`
+      ${color ? TypographyColor[color] : ""}
+      ${align ? TypographyAlign[align] : ""}
+      ${ellipsis ? "overflow-ellipsis overflow-hidden" : ""}
+      ${noWrap ? "whitespace-nowrap" : ""}
+      ${className ? className : ""}
+      ${variant ? TypographyVariant[variant] : ""}
+      `}
     >
       {children}
     </Component>
