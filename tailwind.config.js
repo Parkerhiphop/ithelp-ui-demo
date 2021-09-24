@@ -5,6 +5,12 @@ module.exports = {
   darkMode: false,
   theme: {
     extend: {
+      width: {
+        em: "1em",
+      },
+      height: {
+        em: "1em",
+      },
       colors: {
         primary: colors.blue,
         secondary: colors.indigo,

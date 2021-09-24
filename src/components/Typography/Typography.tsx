@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { Color, ColorType } from "../../system/typings";
 
 export type TypographyVariantType =
   | `h${1 | 2 | 3 | 4 | 5 | 6}`
@@ -53,23 +54,11 @@ export const TypographyAlign = {
 
 export type TypographyAlignType = keyof typeof TypographyAlign;
 
-export const TypographyColor = {
-  primary: "text-primary-500",
-  secondary: "text-secondary-500",
-  success: "text-success-500",
-  error: "text-error-500",
-  warning: "text-warning-500",
-  black: "text-black-500",
-  gray: "text-gray-500",
-};
-
-export type TypographyColorType = keyof typeof TypographyColor;
-
 export interface TypographyProps {
   align?: TypographyAlignType;
   children: ReactNode;
   className?: string;
-  color?: TypographyColorType;
+  color?: ColorType;
   ellipsis?: boolean;
   noWrap?: boolean;
   variant?: TypographyVariantType;
@@ -95,12 +84,12 @@ export const Typography: React.FC<TypographyProps> = (props) => {
   return (
     <Component
       className={`
-      ${color ? TypographyColor[color] : ""}
+      ${color ? Color[color] : ""}
       ${align ? TypographyAlign[align] : ""}
       ${ellipsis ? "overflow-ellipsis overflow-hidden" : ""}
       ${noWrap ? "whitespace-nowrap" : ""}
-      ${className ? className : ""}
       ${variant ? TypographyVariant[variant] : ""}
+      ${className ? className : ""}
       `}
     >
       {children}

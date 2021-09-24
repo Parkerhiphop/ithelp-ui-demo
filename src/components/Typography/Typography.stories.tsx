@@ -1,25 +1,15 @@
 import { Meta, Story } from "@storybook/react";
 import React from "react";
+import { colors } from "../../system/typings";
 
 import {
   Typography,
   TypographyAlignType,
-  TypographyColorType,
   TypographyProps,
   TypographyVariantType,
 } from "./Typography";
 
 const aligns: TypographyAlignType[] = ["left", "center", "right", "justify"];
-
-const colors: TypographyColorType[] = [
-  "primary",
-  "secondary",
-  "error",
-  "warning",
-  "success",
-  "black",
-  "gray",
-];
 
 const variants: TypographyVariantType[] = [
   "h1",
