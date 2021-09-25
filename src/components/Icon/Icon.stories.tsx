@@ -37,15 +37,15 @@ export default {
   component: Icon,
 } as Meta;
 
-export const Playgroud: Story<IconProps> = (props) => (
+export const Playground: Story<IconProps> = (props) => (
   <Icon {...props} icon={TimesIcon} />
 );
 
-Playgroud.args = {
+Playground.args = {
   icon: PlusIcon,
   spin: false,
 };
-Playgroud.argTypes = {
+Playground.argTypes = {
   color: {
     description: "因應 Design System Palette 會賦予文字的顏色們",
     type: "string",

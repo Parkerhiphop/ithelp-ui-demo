@@ -1,14 +1,16 @@
 import React from "react";
-
-export interface TransitionProps {
-
+import { CSSTransition } from "react-transition-group";
+import { CSSTransitionProps } from "react-transition-group/CSSTransition";
+export interface TransitionProps extends Omit<CSSTransitionProps, ''> {
 }
 
-export const Transition: React.FC<TransitionProps> = () => {
+export const Transition: React.FC<CSSTransitionProps> = (props) => {  
   return (
-    <div>
-      Transition
-    </div>
+    <CSSTransition
+      {...props}
+    >
+      {/* {children} */}
+    </CSSTransition>
   )
 }
 
