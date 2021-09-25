@@ -67,18 +67,10 @@ Playground.argTypes = {
   children: {
     description: "Typography 要顯示的文字",
     type: { name: "string", required: true },
-    table: {
-      type: {
-        summary: variants.map((v) => v),
-        defaultValue: {
-          summary: "true",
-        },
-      },
-    },
     control: "text",
   },
   className: {
-    description: "客製化 Typography 的 Tailwind utility class",
+    description: "客製化 Typography 的 Tailwind utility class 參照 [Tailwind](https://tailwindcss.tw/docs/)",
     type: "string",
     table: {
       type: {

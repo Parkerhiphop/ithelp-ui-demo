@@ -33,12 +33,11 @@ export interface IconProps {
    * @default false
    */
   spin?: boolean;
-  width?: number;
-  height?: number;
 }
 
 /**
  * 可套用 IconDefinition 來 Render 對應 Icon 的元件
+ *  * [Source Code](https://github.com/Parkerhiphop/ithelp-ui-demo/blob/main/src/components/Icon/Icon.tsx)
  */
 export const Icon: React.FC<IconProps> = (props) => {
   const { className, color = "black", icon, spin = false } = props;
