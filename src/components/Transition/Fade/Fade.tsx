@@ -1,24 +1,26 @@
-import Transition, { TransitionProps } from "../Transition";
+import { CSSTransition } from "react-transition-group";
+import { CSSTransitionProps } from "react-transition-group/CSSTransition";
+
 
 import './fade.css';
 
-export interface FadeProps extends TransitionProps {
+export interface FadeProps extends CSSTransitionProps {
 }
 
-export const Fade: React.FC<FadeProps> = (props) => {
+export const Fade: React.FC<CSSTransitionProps> = (props) => {
   const {
     children,
     ...rest
   } = props;
 
   return (
-    <Transition
+    <CSSTransition
       timeout={300}
       unmountOnExit
       classNames="fade"
       {...rest}
     >
     {children}
-  </Transition>
+  </CSSTransition>
   )
 }
