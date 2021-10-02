@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { PlusIcon, SearchIcon } from '../Icon/src';
+import { SearchIcon } from '../Icon/src';
 import Icon from '../Icon/Icon';
 import Button from './Button';
 
@@ -55,17 +55,17 @@ export const WithIcons = () => (
   <div
     style={{
       display: 'inline-grid',
-      gridTemplateColumns: 'repeat(3, min-content)',
+      gridTemplateColumns: 'repeat(4, min-content)',
       gap: '16px',
       alignItems: 'center',
     }}
   >
     <Button
-      prefix={<Icon icon={PlusIcon} />}
-      color="secondary"
+      suffix={<Icon icon={SearchIcon} />}
+      size="small"
       variant="contained"
     >
-      plus
+      search
     </Button>
     <Button
       suffix={<Icon icon={SearchIcon} />}
@@ -76,13 +76,6 @@ export const WithIcons = () => (
     <Button
       suffix={<Icon icon={SearchIcon} />}
       disabled
-      variant="contained"
-    >
-      search
-    </Button>
-    <Button
-      suffix={<Icon icon={SearchIcon} />}
-      size="small"
       variant="contained"
     >
       search

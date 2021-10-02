@@ -29,7 +29,7 @@ import {
   TimesIcon,
   UploadIcon,
 } from "./src";
-import { Icon, IconProps } from "./Icon";
+import Icon, { IconProps } from "./Icon";
 import { colors } from "../../system/typings";
 
 export default {

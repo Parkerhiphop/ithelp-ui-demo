@@ -1,15 +1,14 @@
-const colors = require("tailwindcss/colors");
+const colors = require('tailwindcss/colors');
 
 module.exports = {
-  purge: [],
   darkMode: false,
   theme: {
     extend: {
       width: {
-        em: "1em",
+        em: '1em',
       },
       height: {
-        em: "1em",
+        em: '1em',
       },
       colors: {
         primary: colors.blue,
@@ -21,15 +20,11 @@ module.exports = {
         gray: colors.gray,
       },
       transitionTimingFunction: {
-        'standard': 'cubic-bezier(0.58, 0.01, 0.29, 1.01)',
-        'emphasized': 'cubic-bezier(0.83, 0, 0.17, 1)',
-        'decelerated': 'cubic-bezier(0, 0, 0.3, 1)',
-        'accelerated': 'cubic-bezier(0.32, 0, 0.67, 0)',
-      }
+        standard: 'cubic-bezier(0.58, 0.01, 0.29, 1.01)',
+        emphasized: 'cubic-bezier(0.83, 0, 0.17, 1)',
+        decelerated: 'cubic-bezier(0, 0, 0.3, 1)',
+        accelerated: 'cubic-bezier(0.32, 0, 0.67, 0)',
+      },
     },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
 };

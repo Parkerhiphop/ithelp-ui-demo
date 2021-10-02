@@ -42,19 +42,29 @@
   p {
     font-size: 1rem; /* 16px */
     font-weight: 400;
-    line-height: 0;
     letter-spacing: 0;
   }
   span {
     font-size: 0.8125rem; /* 13px */
     font-weight: 400;
-    line-height: 0;
     letter-spacing: 0;
   }
   caption {
     font-size: 0.75rem; /* 12px */
     font-weight: 400;
-    line-height: 0;
     letter-spacing: 0;
+  }
+}
+
+@layer components {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .button__label--min {
+    min-width: 24px;
+  }
+  .button__label {
+    min-width: 32px;
   }
 }

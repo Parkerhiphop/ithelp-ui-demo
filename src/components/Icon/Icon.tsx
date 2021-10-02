@@ -18,7 +18,7 @@ export interface IconDefinition {
   };
 }
 
-export interface IconProps {
+export interface IconProps extends React.ComponentPropsWithRef<'i'> {
   className?: string;
   /**
    * Color name provided by palette.
@@ -39,12 +39,13 @@ export interface IconProps {
  * 可套用 IconDefinition 來 Render 對應 Icon 的元件
  *  * [Source Code](https://github.com/Parkerhiphop/ithelp-ui-demo/blob/main/src/components/Icon/Icon.tsx)
  */
-export const Icon: React.FC<IconProps> = (props) => {
-  const { className, color = "black", icon, spin = false } = props;
+const Icon: React.FC<IconProps> = (props) => {
+  const { className, color = "black", icon, spin = false, style, ...rest } = props;
   const { definition } = icon;
 
   return (
     <i
+      {...rest}
       aria-hidden
       className={`
         inline-block flex-shrink-0 select-none w-em h-em
@@ -53,6 +54,7 @@ export const Icon: React.FC<IconProps> = (props) => {
         ${className ? className : ""}
       `}
       data-icon-name={icon.name}
+      style={style}
     >
       <svg {...definition.svg} focusable={false}>
         <path {...definition.path} />
@@ -60,3 +62,5 @@ export const Icon: React.FC<IconProps> = (props) => {
     </i>
   );
 };
+
+export default Icon;

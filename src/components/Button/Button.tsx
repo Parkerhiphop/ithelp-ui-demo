@@ -15,12 +15,10 @@ export const ButtonVariant = {
 export type ButtonVariantType = keyof typeof ButtonVariant;
 
 export const ButtonSize = {
-  large: `h-10 ${TypographyVariant['button1']} p-4`,
-  medium: `h-8 ${TypographyVariant['button2']} p-4`,
-  small: `h-6 ${TypographyVariant['button3']} p-3`,
+  large: `button_label h-10 ${TypographyVariant['button1']}`,
+  medium: `button_label h-8 ${TypographyVariant['button2']}`,
+  small: `button_label--min h-6 ${TypographyVariant['button3']}`,
 };
-
-export type ButtonComponent = 'button' | 'a';
 
 // 概念：先繼承原生的 Button Props 再來擴充需要的 Props
 export interface ButtonProps extends Omit<React.ComponentPropsWithRef<'button'>, 'prefix'> {
@@ -72,7 +70,6 @@ export interface ButtonProps extends Omit<React.ComponentPropsWithRef<'button'>,
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(props, ref) {
   const {
     children,
-    className,
     color = 'primary',
     error = false,
     disabled = false,
@@ -82,6 +79,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(props,
     size = 'medium',
     suffix: suffixProp,
     variant = 'text',
+    style,
     ...rest
   } = props;
 
@@ -101,34 +99,39 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(props,
   const asIconBtn = children == null && !!(prefix || suffix);
 
   const buttonColorClass = useMemo(() => {
-    if (disabled) {
-      return Color['disabled'];
-    } else if (error) {
-      return Color['error'];
-    } else if (color) {
-      return Color[color];
-    }
+    if (disabled) return Color['disabled'];
+    if (error) return Color['error'];
+    if (color) return Color[color];
   }, [color, disabled, error]);
+
+  const padding = useMemo(() => {
+    if (asIconBtn) return 'px-0';
+
+    if (size === 'small') return 'px-3';
+
+    return 'px-4';
+  }, [asIconBtn, size]);
+
+  const iconClass = useMemo(() => size === 'small' ? "text-lg" : "text-2xl", [size]);
+
+  const variantClass = useMemo(() => {
+    if (variant === 'contained') return `text-white ${ButtonVariant[variant]}-${buttonColorClass}`;
+
+    if (variant === 'outlined') return `border-2 text-${buttonColorClass} ${ButtonVariant[variant]}-${buttonColorClass}`;
+
+    return `${ButtonVariant[variant]}-${buttonColorClass}`;
+  }, [buttonColorClass, variant]);
+
+  const disabledClass = useMemo(() => disabled ? "opacity-40 cursor-not-allowed" : "hover:opacity-60", [disabled]);
+  const loadingClass = useMemo(() => loading ? "cursor-default pointer-events-none" : "", [loading]);
 
   return (
     <button
       {...rest}
       ref={ref}
       aria-disabled={disabled}
-      className={`
-        w-auto
-        relative box-border flex-center flex-shrink-0 m-0 rounded
-        cursor-pointer select-none whitespace-nowrap uppercase
-        focus:outline-none
-        text-${variant === 'contained' ? 'white' : buttonColorClass}
-        ${ButtonVariant[variant]}-${buttonColorClass}
-        ${size ? ButtonSize[size] : ""}
-        ${variant === 'outlined' ? "border-2" : "border-none"}
-        ${disabled ? "opacity-40 cursor-not-allowed" : "hover:opacity-60"}
-        ${asIconBtn ? "" : ""}
-        ${loading ? "" : ""}
-        ${className ? className : ""}
-        `}
+      className={`relative box-border flex-center flex-shrink-0 gap-1 m-0 rounded cursor-pointer select-none whitespace-nowrap uppercase focus:outline-none ${padding} ${iconClass} ${variantClass} ${disabledClass} ${loadingClass}`}
+      style={style}
       disabled={disabled}
       onClick={(event: MouseEvent<HTMLButtonElement>) => {
         if (!disabled && !loading && onClick) {
@@ -137,7 +140,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(props,
       }}
     >
       {prefix}
-      {children && <span className="label">{children}</span>}
+      {children && <span className={`${size ? ButtonSize[size] : ""}`}>{children}</span>}
       {suffix}
     </button>
   );

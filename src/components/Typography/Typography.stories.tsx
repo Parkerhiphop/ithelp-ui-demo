@@ -69,16 +69,6 @@ Playground.argTypes = {
     type: { name: "string", required: true },
     control: "text",
   },
-  className: {
-    description: "客製化 Typography 的 Tailwind utility class 參照 [Tailwind](https://tailwindcss.tw/docs/)",
-    type: "string",
-    table: {
-      type: {
-        summary: "Tailwind Utility Class",
-      },
-    },
-    control: "text",
-  },
   color: {
     description: "因應 Design System Palette 會賦予文字的顏色們",
     type: "string",

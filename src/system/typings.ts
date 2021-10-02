@@ -1,11 +1,11 @@
 export const Color = {
-  primary: "text-primary-500",
-  secondary: "text-secondary-500",
-  success: "text-success-500",
-  error: "text-error-500",
-  warning: "text-warning-500",
-  black: "text-black-500",
-  disabled: "text-gray-500",
+  primary: "primary-500",
+  secondary: "secondary-500",
+  success: "success-500",
+  error: "error-500",
+  warning: "warning-500",
+  black: "black-500",
+  disabled: "gray-500",
 };
 
 export type ColorType = keyof typeof Color;
@@ -19,6 +19,10 @@ export const colors: ColorType[] = [
   "black",
   "disabled",
 ];
+
+export type Size = 'small' | 'medium' | 'large';
+
+export type Orientation = 'horizontal' | 'vertical';
 
 export type TransitionDurationType =
   | 'shortest'

@@ -10,13 +10,13 @@ export type TypographyVariantType =
 
 export const TypographyVariant = {
   body1: "text-base	font-normal	tracking-normal	leading-6",
-  body2: "text-sm font-normal	tracking-normal leading-5	",
-  button1: "text-base font-medium	tracking-wide	leading-10	",
-  button2: "text-base	font-medium	tracking-wide	leading-8	",
-  button3: "text-sm font-medium	tracking-normal leading-6	",
+  body2: "text-sm font-normal	tracking-normal leading-5",
+  button1: "text-base font-medium	tracking-wide	leading-10",
+  button2: "text-base	font-medium	tracking-wide	leading-8",
+  button3: "text-sm font-medium	tracking-normal leading-6",
   input1: "text-base font-normal tracking-normal leading-10",
-  input2: "text-base font-normal tracking-normal leading-8	",
-  input3: "text-base font-normal tracking-normal leading-6	",
+  input2: "text-base font-normal tracking-normal leading-8",
+  input3: "text-base font-normal tracking-normal leading-6",
 };
 
 export type TypographyComponent =
@@ -54,7 +54,7 @@ export const TypographyAlign = {
 
 export type TypographyAlignType = keyof typeof TypographyAlign;
 
-export interface TypographyProps {
+export interface TypographyBaseProps {
   align?: TypographyAlignType;
   children: ReactNode;
   className?: string;
@@ -64,33 +64,39 @@ export interface TypographyProps {
   variant?: TypographyVariantType;
 }
 
-/**
+export type TypographyProps<C extends TypographyComponent = 'p'> =
+  React.ComponentPropsWithRef<C> & TypographyBaseProps;
+
+/*
  * 統合文字各種情境的元件
  * [Source Code](https://github.com/Parkerhiphop/ithelp-ui-demo/blob/main/src/components/Typography/Typography.tsx)
  */
+/** @todo Refactor className */
 export const Typography: React.FC<TypographyProps> = (props) => {
   const {
     align = "left",
     children,
-    className,
     color = "black",
     ellipsis = false,
     noWrap = false,
     variant = "body1",
+    style,
+    ...rest
   } = props;
 
   const Component = getComponentFromVariant(variant) as any;
 
   return (
     <Component
+      {...rest}
       className={`
-      ${color ? Color[color] : ""}
+      ${color ? `text-${Color[color]}` : ""}
       ${align ? TypographyAlign[align] : ""}
       ${ellipsis ? "overflow-ellipsis overflow-hidden" : ""}
       ${noWrap ? "whitespace-nowrap" : ""}
       ${variant ? TypographyVariant[variant] : ""}
-      ${className ? className : ""}
       `}
+      style={style}
     >
       {children}
     </Component>
