@@ -1,4 +1,5 @@
 import {
+  useMemo,
   Children,
   cloneElement,
   forwardRef,
@@ -80,21 +81,21 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(function Button
     size = 'medium',
     spacing = 'space-x-4',
     variant = 'text',
+    style,
     ...rest
   } = props;
+
+  const orientationClass = useMemo(() => orientation === 'horizontal' ? "flex-row" : 'flex-col', [orientation]);
+  const spaceClass = useMemo(() => !attached && spacing ? spacing : "", [attached, spacing]);
+  const fullWidthClass = useMemo(() => fullWidth ? "w-full" : "", [fullWidth]);
 
   return (
     <div
       ref={ref}
       {...rest}
       aria-orientation={orientation}
-      className={`
-        flex
-        ${orientation === 'horizontal' ? "flex-row" : "flex-col"}
-        ${!attached && spacing ? spacing : ""}
-        ${fullWidth ? "w-full" : ""}
-        ${className ? className : ""}
-      `}
+      className={`flex ${orientationClass} ${spaceClass} ${fullWidthClass}`}
+      style={style}
       role={role}
     >
       {Children.map(children, (unknownChild) => {
