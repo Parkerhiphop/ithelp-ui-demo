@@ -69,30 +69,3 @@ Playgroud.argTypes = {
     },
   },
 };
-
-export const DropdownLike = () => (
-  <>
-    <ButtonGroup
-      attached
-      color="primary"
-      variant="contained"
-    >
-      <Button>click</Button>
-      <IconButton>
-        <Icon icon={ChevronDownIcon} />
-      </IconButton>
-    </ButtonGroup>
-    <br />
-    <br />
-    <ButtonGroup
-      attached
-      color="primary"
-      variant="outlined"
-    >
-      <Button>click</Button>
-      <IconButton>
-        <Icon icon={ChevronDownIcon} />
-      </IconButton>
-    </ButtonGroup>
-  </>
-);

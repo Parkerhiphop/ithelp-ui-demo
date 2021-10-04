@@ -67,4 +67,12 @@
   .button__label {
     min-width: 32px;
   }
+
+  .textfield--min {
+    min-width: 132px;
+  }
+
+  .textfield {
+    min-width: 160px;
+  }
 }
