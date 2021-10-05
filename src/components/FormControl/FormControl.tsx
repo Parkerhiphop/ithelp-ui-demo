@@ -3,7 +3,7 @@ import { Severity as SeverityType } from '../../system/typings';
 import { NativeElementPropsWithoutKeyAndRef } from '../../utils/jsx-types';
 import { FormControlContextProps, FormControlContext } from './FormControlContext';
 
-const Severity = {
+export const FormSeverity = {
   success: "",
   warning: "",
   error: "",
@@ -57,7 +57,7 @@ const FormControl = forwardRef<HTMLDivElement, FormControlProps>(function FormCo
     <div
       {...rest}
       ref={ref}
-      className={`host ${severity ? Severity[severity] : ""} ${disabledClass} ${fullWidthClass}`}
+      className={`host ${severity ? FormSeverity[severity] : ""} ${disabledClass} ${fullWidthClass}`}
     >
       <FormControlContext.Provider value={formControl}>
         {children}

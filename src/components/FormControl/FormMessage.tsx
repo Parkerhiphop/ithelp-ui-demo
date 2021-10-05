@@ -11,7 +11,7 @@ import { FormControlContext } from './FormControlContext';
 
 export type FormMessageProps = NativeElementPropsWithoutKeyAndRef<'span'>;
 
-export const formMessageIcons = {
+export const FormMessageIcons = {
   success: CheckCircleFilledIcon,
   warning: ExclamationCircleFilledIcon,
   error: MinusCircleFilledIcon,
@@ -28,7 +28,7 @@ const FormMessage = forwardRef<HTMLSpanElement, FormMessageProps>(function FormM
     ...rest
   } = props;
   const { severity } = useContext(FormControlContext) || {};
-  const icon = severity ? formMessageIcons[severity] : null;
+  const icon = severity ? FormMessageIcons[severity] : null;
 
   return (
     <span
