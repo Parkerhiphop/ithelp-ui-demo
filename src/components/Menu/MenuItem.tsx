@@ -22,7 +22,8 @@ export interface MenuItemProps extends NativeElementPropsWithoutKeyAndRef<'li'> 
 }
 
 /**
- * The react component for `mezzanine` menu item.
+ * @todo
+ * ClassNam
  */
 const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(function MenuItem(props, ref) {
   const {

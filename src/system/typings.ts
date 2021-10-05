@@ -51,3 +51,7 @@ export const TRANSITION_EASING: Readonly<Record<TransitionEasingType, string>> =
   decelerated: 'cubic-bezier(0, 0, 0.3, 1)',
   accelerated: 'cubic-bezier(0.32, 0, 0.67, 0)',
 };
+
+export type Severity = 'success' | 'warning' | 'error';
+
+export type SeverityWithInfo = Severity | 'info';
