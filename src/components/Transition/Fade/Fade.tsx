@@ -4,7 +4,7 @@ import { CSSTransitionProps } from "react-transition-group/CSSTransition";
 
 import './fade.css';
 
-export interface FadeProps extends CSSTransitionProps {
+export interface FadeProps extends Omit<CSSTransitionProps, ''> {
 }
 
 export const Fade: React.FC<CSSTransitionProps> = (props) => {
@@ -20,7 +20,7 @@ export const Fade: React.FC<CSSTransitionProps> = (props) => {
       classNames="fade"
       {...rest}
     >
-    {children}
-  </CSSTransition>
+      {children}
+    </CSSTransition>
   )
 }

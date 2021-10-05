@@ -20,7 +20,7 @@ export const Playground: Story<CSSTransitionProps> = () => {
         type="button"
         className="bg-primary-500 text-white w-40 h-16 flex rounded items-center justify-center focus:outline-none mb-2"
         onClick={() => toggleTransition((prev) => !prev)}
-        >Toggle Transition
+      >Toggle Transition
       </button>
       <Transition
         in={transition}
@@ -88,10 +88,11 @@ export const FadeStory: Story = () => {
         type="button"
         className="bg-primary-500 text-white w-40 h-16 flex rounded items-center justify-center focus:outline-none mb-2"
         onClick={() => toggleTransition((prev) => !prev)}
-        >Toggle Fade
+      >Toggle Fade
       </button>
       <Fade
         in={transition}
+        addEndListener={() => { }}
       >
         <div
           className="w-52 h-52 bg-primary-500"
