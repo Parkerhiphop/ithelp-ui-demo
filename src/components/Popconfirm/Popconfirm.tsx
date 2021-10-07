@@ -46,24 +46,27 @@ const Popconfirm = forwardRef<HTMLDivElement, PopconfirmProps>(function Popconfi
     <Popover
       {...rest}
       ref={ref}
-      className="classes.host"
+      className="min-width-popconfirm"
       style={style}
       title={(
         <>
-          <Icon className="icon" icon={icon} />
+          <Icon className={`m-2 text-2xl text-primary-500`} icon={icon} />
           {title}
         </>
       )}
     >
-      <ConfirmActions
-        cancelButtonProps={cancelButtonProps}
-        cancelText={cancelText}
-        confirmButtonProps={confirmButtonProps}
-        confirmText={confirmText}
-        onCancel={onCancel}
-        onConfirm={onConfirm}
-        size="small"
-      />
+      <div className="mt-4 flex justify-end">
+        <ConfirmActions
+          cancelButtonProps={cancelButtonProps}
+          cancelText={cancelText}
+          confirmButtonProps={confirmButtonProps}
+          confirmText={confirmText}
+          onCancel={onCancel}
+          onConfirm={onConfirm}
+          size="small"
+        />
+      </div>
+
     </Popover>
   );
 });

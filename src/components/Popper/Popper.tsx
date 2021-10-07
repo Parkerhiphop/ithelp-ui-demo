@@ -23,22 +23,9 @@ export interface PopperProps
   extends
   Pick<PortalProps, 'container' | 'disablePortal'>,
   NativeElementPropsWithoutKeyAndRef<'div'> {
-  /**
-   * The ref of trigger Element.
-   */
   anchor?: ElementGetter;
-  /**
-   * Provide `controllerRef` if you need access to `usePopper` results.
-   */
   controllerRef?: Ref<PopperController>;
-  /**
-   * The portal element will show if open=true
-   * @default false
-   */
   open?: boolean;
-  /**
-   * The options of usePopper hook of react-popper.
-   */
   options?: PopperOptions<any>;
 }
 

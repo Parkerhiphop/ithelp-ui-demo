@@ -26,6 +26,7 @@ const demoPopperContent = (
   </div>
 );
 
+
 export const Basic = () => {
   const [anchorRef, setAnchorRef] = useState<HTMLButtonElement | null>(null);
 
@@ -60,6 +61,26 @@ export const Basic = () => {
     </div>
   );
 };
+
+Basic.argTypes = {
+  anchor: {
+    description: "觸發 Popper 的 Element Ref",
+    type: "string",
+    control: "text",
+  },
+  controllerRef: {
+    description: "提供一個可以讓你去取得 usePopper 結果的 controllerRef",
+    control: "text",
+  },
+  open: {
+    description: '是否顯示 Portal Element',
+    control: 'boolean',
+  },
+  options: {
+    description: 'react-popper 的 usePopper hook 裡的 options',
+    control: 'string',
+  }
+}
 
 export const Placement = () => {
   const [popperPlacement, setPopperPlacement] = useState<PopperPlacement>('top');

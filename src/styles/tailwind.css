@@ -68,11 +68,15 @@
     min-width: 32px;
   }
 
-  .textfield--min {
+  .min-width--sm {
     min-width: 132px;
   }
 
-  .textfield {
+  .min-width {
     min-width: 160px;
+  }
+
+  .min-width-popconfirm {
+    min-width: 244px;
   }
 }

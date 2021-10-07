@@ -12,61 +12,18 @@ import { IconButtonProps } from './IconButton';
 export type ButtonGroupChild = ReactElement<ButtonProps | IconButtonProps> | null | undefined | false;
 
 export interface ButtonGroupProps extends React.ComponentPropsWithRef<'div'> {
-  /**
-   * If `true`, all buttons will not have spacing between each others.
-   * @default false
-   */
   attached?: boolean;
-  /**
-   * Only accept button elements or icon button elements.
-   */
   children: ButtonGroupChild | ButtonGroupChild[];
-  /**
-   * If the `color` of a button inside group not provided, the `color` of group will override it.
-   * @default 'primary'
-   */
   color?: ButtonColorType;
-  /**
-   * If the `danger` of a button inside group not provided, the `danger` of group will override it.
-   * @default false
-   */
   error?: boolean;
-  /**
-   * If the `disabled` of a button inside group not provided, the `disabled` of group will override it.
-   * @default false
-   */
   disabled?: boolean;
-  /**
-   * If `true`, set width: 100%.
-   * @default false
-   */
   fullWidth?: boolean;
-  /**
-   * The orientation of button group.
-   * @default horizontal
-   */
   orientation?: Orientation;
-  /**
-   * If the `size` of a button inside group not provided, the `size` of group will override it.
-   * @default 'medium'
-   */
   size?: Size;
-  /**
-   * The spacing level of button gap between each buttons.
-   * Will be added on if `attached`=false.
-   * @default 'space-x-4'
-   */
   spacing?: string;
-  /**
-   * If the `variant` of a button inside group not provided, the `variant` of group will override it.
-   * @default 'text'
-   */
   variant?: ButtonVariantType;
 }
 
-/**
- * The react component for `mezzanine` button group.
- */
 const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(function ButtonGroup(props, ref) {
   const {
     attached = false,
@@ -79,13 +36,13 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(function Button
     orientation = 'horizontal',
     role = 'group',
     size = 'medium',
-    spacing = 'space-x-4',
+    spacing = 'gap-4',
     variant = 'text',
     style,
     ...rest
   } = props;
 
-  const orientationClass = useMemo(() => orientation === 'horizontal' ? "flex-row" : 'flex-col', [orientation]);
+  const orientationClass = useMemo(() => orientation === 'horizontal' ? "flex flex-row" : 'inline-grid grid-flow-row ', [orientation]);
   const spaceClass = useMemo(() => !attached && spacing ? spacing : "", [attached, spacing]);
   const fullWidthClass = useMemo(() => fullWidth ? "w-full" : "", [fullWidth]);
 
@@ -94,7 +51,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(function Button
       ref={ref}
       {...rest}
       aria-orientation={orientation}
-      className={`flex ${orientationClass} ${spaceClass} ${fullWidthClass}`}
+      className={`${orientationClass} ${spaceClass} ${fullWidthClass}`}
       style={style}
       role={role}
     >

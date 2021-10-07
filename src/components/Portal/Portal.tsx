@@ -8,19 +8,8 @@ import { createPortal } from 'react-dom';
 import { ElementGetter, getElement } from '../../utils/getElement';
 
 export interface PortalProps {
-  /**
-   * The element you want to portal.
-   */
   children?: ReactNode;
-  /**
-   * The destination where to portal.
-   */
   container?: ElementGetter;
-  /**
-   * Whether to disable portal.
-   * If true, it will be a normal component.
-   * @default false
-   */
   disablePortal?: boolean;
 }
 

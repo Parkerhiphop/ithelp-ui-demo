@@ -2,7 +2,7 @@ import { forwardRef, ReactNode } from "react";
 import Button, { ButtonProps } from "./Button";
 
 export interface IconButtonProps extends Omit<ButtonProps, | 'prefix' | 'suffix'> {
-  children: ReactNode; // 把 children 改成 icon
+  children: ReactNode;
 }
 
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(function IconButton(props, ref) {
@@ -11,6 +11,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(function IconB
   return (
     <Button
       {...rest}
+      ref={ref}
       prefix={children}
     />
   );

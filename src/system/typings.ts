@@ -22,6 +22,8 @@ export const colors: ColorType[] = [
 
 export type Size = 'small' | 'medium' | 'large';
 
+export const Sizes: Size[] = ['small' , 'medium' , 'large'];
+
 export type Orientation = 'horizontal' | 'vertical';
 
 export type TransitionDurationType =

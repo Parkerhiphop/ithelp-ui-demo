@@ -3,6 +3,7 @@ import { StrictModifiers } from '@popperjs/core';
 import Popper, { PopperProps } from '../Popper/Popper';
 import { ClickAwayEvent, useClickAway } from '../../hooks/useClickAway';
 import { useComposeRefs } from '../../hooks/useComposeRefs';
+import { Typography } from '../Typography/Typography';
 
 const offsetModifier: StrictModifiers = {
   name: 'offset',
@@ -71,7 +72,7 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(function Popover(props,
     <Popper
       {...rest}
       ref={composedRef}
-      className="classes.host"
+      className="p-4 border box-border min-width"
       style={style}
       open={open}
       options={{
@@ -79,8 +80,8 @@ const Popover = forwardRef<HTMLDivElement, PopoverProps>(function Popover(props,
         modifiers: [offsetModifier, ...modifiers],
       }}
     >
-      {title && <div className="title">{title}</div>}
-      {children && <div className="content">{children}</div>}
+      {title && <Typography variant="h6" style={{ display: 'flex', alignItems: 'center' }}>{title}</Typography>}
+      {children && <Typography variant="body2">{children}</Typography>}
     </Popper>
   );
 });

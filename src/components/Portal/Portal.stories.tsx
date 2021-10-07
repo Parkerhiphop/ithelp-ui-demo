@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 import { useRef } from 'react';
 import { Typography } from '../Typography/Typography';
 import Portal from './Portal';
@@ -8,26 +8,17 @@ export default {
 } as Meta;
 
 const demoElement = (
-  <div style={{
-    width: '100px',
-    height: '100px',
-    backgroundImage: 'radial-gradient(circle, #778de8, #7b83c6, #797aa6, #737287, #6a6a6a)',
-    borderRadius: '100%',
-  }}
-  />
+  <div className="border border-primary-500 px-1">
+    I am Portaled Element！
+  </div>
 );
 
-export const Common = () => {
+export const Common: Story<{}> = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
-      <div style={{
-        width: '100%',
-        height: '100px',
-        backgroundColor: '#d9d9d9',
-      }}
-      >
+      <div className="w-full h-32 bg-gray-100">
         <Typography>
           The container wrapping portal.
         </Typography>
@@ -35,13 +26,8 @@ export const Common = () => {
           {demoElement}
         </Portal>
       </div>
-      <div
+      <div className="w-full h-32 bg-gray-300"
         ref={containerRef}
-        style={{
-          width: '100%',
-          height: '100px',
-          backgroundColor: '#e5e5e5',
-        }}
       >
         <Typography>
           The portal destination.
@@ -51,3 +37,23 @@ export const Common = () => {
   );
 };
 
+Common.args = {
+  disablePortal: false,
+}
+
+Common.argTypes = {
+  children: {
+    description: "Portal 要傳送的 Element",
+    type: "string",
+    control: "text",
+  },
+  container: {
+    description: "Portal 要傳送的位置",
+    type: "string",
+    control: "text",
+  },
+  disablePortal: {
+    description: '取消 Portal 功能',
+    control: 'boolean',
+  }
+}

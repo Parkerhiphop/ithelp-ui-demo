@@ -22,51 +22,16 @@ export const ButtonSize = {
 
 // 概念：先繼承原生的 Button Props 再來擴充需要的 Props
 export interface ButtonProps extends Omit<React.ComponentPropsWithRef<'button'>, 'prefix'> {
-  /**
-   * The color name provided by palette.
-   * @default 'primary'
-   */
   color?: ButtonColorType;
-  /**
-   * If true, will use error color instead of color from props.
-   * @default false
-   */
   error?: boolean;
-  /**
-   * If true, button will be disabled
-   * @default false
-   */
   disabled?: boolean;
-  /**
-   * If true, replace the original icon.
-   * Replace suffix if only suffix provided, or prefix.
-   * @default false
-   */
   loading?: boolean;
-  /**
-   * The element placed on the start of button.
-   */
   prefix?: ReactNode;
-  /**
-   * The size of button.
-   * @default 'medium'
-   */
   size?: Size;
-  /**
-   * The element placed on the end of button.
-   */
   suffix?: ReactNode;
-  /**
-   * The variant of button.
-   * @default 'text'
-   */
   variant?: ButtonVariantType;
 }
 
-/**
- * @todo
- * ClassName Refactor
- */
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(props, ref) {
   const {
     children,

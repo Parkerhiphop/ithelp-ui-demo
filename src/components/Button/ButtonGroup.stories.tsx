@@ -1,10 +1,7 @@
 import { Story, Meta } from '@storybook/react';
-import { ChevronDownIcon } from '../Icon/src';
-import Icon from '../Icon/Icon';
 import Button from './Button';
 import { Orientation } from '../../system/typings';
 import ButtonGroup, { ButtonGroupProps } from './ButtonGroup';
-import IconButton from './IconButton';
 
 export default {
   title: 'General/Button/ButtonGroup',
@@ -15,7 +12,7 @@ const orientations: Orientation[] = [
   'vertical',
 ];
 
-export const Playgroud: Story<ButtonGroupProps> = ({ attached, orientation }) => (
+export const Playground: Story<ButtonGroupProps> = ({ attached, orientation }) => (
   <>
     <ButtonGroup
       attached={attached}
@@ -57,15 +54,24 @@ export const Playgroud: Story<ButtonGroupProps> = ({ attached, orientation }) =>
   </>
 );
 
-Playgroud.args = {
+Playground.args = {
   attached: false,
   orientation: 'horizontal',
 };
-Playgroud.argTypes = {
+Playground.argTypes = {
   orientation: {
+    description: "Button 們排列的方向",
     control: {
       type: 'select',
       options: orientations,
     },
   },
+  spacing: {
+    description: "Button 們之間的距離，參照 [Tailwind Gap](https://tailwindcss.tw/docs/gap)",
+    control: 'string',
+  },
+  attached: {
+    description: '讓 Button 們黏在一起',
+    control: 'boolean',
+  }
 };
