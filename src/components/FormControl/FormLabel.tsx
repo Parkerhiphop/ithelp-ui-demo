@@ -11,10 +11,6 @@ export interface FormLabelProps extends NativeElementPropsWithoutKeyAndRef<'labe
   remarkIcon?: ReactNode;
 }
 
-/**
- * @todo
- * ClassName
- */
 const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(function FormLabel(props, ref) {
   const {
     children,

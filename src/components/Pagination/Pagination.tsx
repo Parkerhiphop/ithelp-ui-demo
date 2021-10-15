@@ -2,7 +2,6 @@ import {
   forwardRef,
   DetailedHTMLProps,
   HTMLAttributes,
-  ReactNode,
   useMemo,
 } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from "../Icon/src";
@@ -91,19 +90,11 @@ export interface PaginationProps
 const Pagination = forwardRef<HTMLDivElement, PaginationProps>(function Pagination(props, ref) {
   const {
     className,
-    boundaryCount = 1,
     buttonText,
     current = 1,
-    disabled = false,
-    hideNextButton = false,
-    hidePreviousButton = false,
     hintText,
     inputPlaceholder,
-    // itemRender = (item) => <PaginationItem {...item} />,
     onPageChange,
-    pageSize = 5,
-    showJumper = false,
-    siblingCount = 1,
     total = 0,
     ...rest
   } = props;

@@ -26,11 +26,6 @@ export interface CreateNotifierProps<
   setRoot?: (root: HTMLDivElement) => void;
 }
 
-/**
- * The utility factory for `mezzanine` to create a notifier.
- *
- * When APIs are called, Notifier will dynamically render a new react instance by `ReactDOM.render` method.
- */
 export default function createNotifier<N extends NotifierData, C extends NotifierConfig = NotifierConfig>(
   props: CreateNotifierProps<N, C>,
 ): Notifier<N, C> {

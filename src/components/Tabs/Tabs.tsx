@@ -23,39 +23,15 @@ export type TabsChild = ReactElement<TabPaneProps>;
 
 export interface TabsProps extends
   Omit<NativeElementPropsWithoutKeyAndRef<'div'>, 'onChange' | 'children'> {
-  /**
-   * Current TabPane's index
-   */
   activeKey?: Key;
-  /**
-   * Actions on the right side of tabBar
-   */
   actions?: ReactNode;
-  /**
-   * The tab panes in tabs
-   */
   children: TabsChild | TabsChild[];
-  /**
-   * Initial active TabPane's key, if activeKey is not set.
-   */
   defaultActiveKey?: Key;
-  /**
-   * The change event handler of Tabs
-   */
   onChange?: (activeKey: Key) => void;
-  /**
-   * Callback executed when tab is clicked
-   */
   onTabClick?: (key: Key, event: MouseEvent) => void;
-  /**
-   * The style of tabBar
-   */
   tabBarStyle?: object;
 }
 
-/**
- * The react component for `mezzanine` tabs.
- */
 const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(props: TabsProps, ref) {
   const {
     activeKey: activeKeyProp,

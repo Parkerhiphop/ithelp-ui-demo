@@ -17,10 +17,6 @@ export const FormMessageIcons = {
   error: MinusCircleFilledIcon,
 };
 
-/**
- * @todo
- * ClassName
- */
 const FormMessage = forwardRef<HTMLSpanElement, FormMessageProps>(function FormMessage(props, ref) {
   const {
     children,

@@ -14,9 +14,6 @@ export interface TabProps extends NativeElementPropsWithoutKeyAndRef<'button'> {
   disabled?: boolean;
 }
 
-/**
- * The react component for `mezzanine` tab.
- */
 const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(props, ref) {
   const {
     active,

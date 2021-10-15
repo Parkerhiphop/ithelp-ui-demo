@@ -1,17 +1,70 @@
-import { Meta } from '@storybook/react';
+import { Meta, Story } from '@storybook/react';
+import { Sizes as sizeOptions } from '../../system/typings';
 import { PlusIcon, SearchIcon } from '../Icon/src';
 import Icon from '../Icon/Icon';
-import Input from './Input';
+import Input, { InputProps } from './Input';
 
 export default {
   title: 'Data Entry/Input',
 } as Meta;
 
+export const Playground: Story<InputProps> = (props) => (
+  <Input {...props} />
+)
+
+Playground.args = {
+  readOnly: false,
+  error: false,
+  required: false,
+};
+
+Playground.argTypes = {
+  defaultValue: {
+    description: "預設值",
+  },
+  value: {
+    description: 'Input 當前的值（通常會用 state 傳下去）',
+  },
+  inputRef: {
+    description: "在使用時可透過 useRef 取得 input ref",
+  },
+  inputProp: {
+    description: "Input Element 原生的 Props",
+  },
+  onChange: {
+    description: "改變 Input 值的 Function（通常會用 setState 傳下去）",
+  },
+  placeholder: {
+    description: "輸入框內沒輸入值時的灰底提示文字",
+    controls: 'string',
+  },
+  readOnly: {
+    description: "Input 為唯讀模式（純顯示不可操作）",
+    controls: 'boolean',
+  },
+  required: {
+    description: "Input 為必填",
+    controls: 'boolean',
+  },
+  error: {
+    description: "錯誤狀態",
+    controls: 'boolean',
+  },
+  size: {
+    description: '輸入框的大小',
+    control: {
+      type: 'select',
+      defaultValue: 'medium',
+      options: sizeOptions,
+    },
+  },
+}
+
 export const Basic = () => (
   <div
     style={{
       display: 'inline-grid',
-      gridTemplateColumns: 'repeat(2, 200px)',
+      gridTemplateColumns: 'repeat(2, 1fr)',
       gap: '16px',
       alignItems: 'center',
     }}
@@ -29,7 +82,7 @@ export const Basic = () => (
     />
     <Input
       placeholder="please enter text"
-      value="Example"
+      value="Read Only"
       readOnly
     />
   </div>
@@ -39,7 +92,7 @@ export const Sizes = () => (
   <div
     style={{
       display: 'inline-grid',
-      gridTemplateColumns: 'repeat(3, 200px)',
+      gridTemplateColumns: 'repeat(3, 1fr)',
       gap: '16px',
       alignItems: 'center',
     }}
@@ -93,7 +146,7 @@ export const PrefixSuffix = () => (
   <div
     style={{
       display: 'inline-grid',
-      gridTemplateColumns: 'repeat(3, 200px)',
+      gridTemplateColumns: 'repeat(3, 1fr)',
       gap: '16px',
       alignItems: 'center',
     }}
@@ -115,28 +168,23 @@ export const PrefixSuffix = () => (
       placeholder="search"
       prefix={<Icon icon={SearchIcon} />}
       size="small"
-      clearable
     />
     <Input
       placeholder="search"
       prefix={<Icon icon={SearchIcon} />}
-      clearable
     />
     <Input
       placeholder="search"
       prefix={<Icon icon={SearchIcon} />}
       size="large"
-      clearable
     />
     <Input
       placeholder="search"
       prefix={<Icon icon={SearchIcon} />}
-      clearable
     />
     <Input
       placeholder="please enter text"
       prefix={<Icon icon={PlusIcon} />}
-      clearable
       error
     />
   </div>

@@ -9,9 +9,6 @@ export interface TabPaneProps extends NativeElementPropsWithoutKeyAndRef<'div'> 
   tab: ReactElement<TabProps>;
 }
 
-/**
- * The react component for `mezzanine` tab pane.
- */
 const TabPane = forwardRef<HTMLDivElement, TabPaneProps>(function TabPane(props, ref) {
   const {
     children,

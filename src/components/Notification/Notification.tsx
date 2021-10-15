@@ -88,16 +88,6 @@ export interface Notification
   > {
 }
 
-/**
- * @todo
- * ClassName
- */
-/**
- * The react component for `mezzanine` notification.
- *
- * Use the API from the Notification instance such as `Notification.success` and `Notification.error`
- * to display a notification globally.
- */
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 const Notification: Notification = ((
   props: PropsWithChildren<NotificationData> & { reference: Key },

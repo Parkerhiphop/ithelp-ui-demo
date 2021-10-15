@@ -1,7 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 import { InfoCircleFilledIcon } from '../Icon/src';
 import { Severity } from '../../system/typings';
-import { ReactNode, useState } from 'react';
 import Icon from '../Icon/Icon';
 import Input from '../Input/Input';
 import FormControl from './FormControl';
@@ -19,7 +18,6 @@ const severities: Severity[] = [
 ];
 
 interface PlaygroundStoryArgs {
-  clearable: boolean;
   disabled: boolean;
   fullWidth: boolean;
   label: string;
@@ -31,7 +29,6 @@ interface PlaygroundStoryArgs {
 }
 
 export const Playground: Story<PlaygroundStoryArgs> = ({
-  clearable,
   disabled,
   fullWidth,
   label,
@@ -54,7 +51,6 @@ export const Playground: Story<PlaygroundStoryArgs> = ({
       {label}
     </FormLabel>
     <Input
-      clearable={clearable}
       placeholder="please enter text"
     />
     <FormMessage>{message}</FormMessage>
@@ -62,7 +58,6 @@ export const Playground: Story<PlaygroundStoryArgs> = ({
 );
 
 Playground.args = {
-  clearable: false,
   disabled: false,
   fullWidth: false,
   label: 'label',
@@ -72,6 +67,7 @@ Playground.args = {
   severity: undefined,
   showRemarkIcon: false,
 };
+
 Playground.argTypes = {
   severity: {
     control: {
